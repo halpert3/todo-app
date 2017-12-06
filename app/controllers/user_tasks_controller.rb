@@ -2,6 +2,8 @@ class UserTasksController < ApplicationController
   before_action :all_tasks, only: [:index, :create, :update, :destroy]
   before_action :set_user_task, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /user_tasks
   # GET /user_tasks.json
   def index
@@ -81,4 +83,5 @@ class UserTasksController < ApplicationController
     def all_tasks
         @user_tasks = UserTask.order(:due)
     end
+
 end

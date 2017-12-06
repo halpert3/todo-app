@@ -1,16 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="container" style="padding-top: 15px">
+	<p id="notice"><%= notice %></p>
 
-<h1>User Tasks</h1>
-<div id="task-form"></div>
+	<h1 style="padding-bottom: 10px">User Tasks</h1>
+	<div id="task-form"></div>
 
-<div id="tasks">
-  <%= render @user_tasks %>
+	<div id="tasks">
+		<% if @user_tasks.empty? %>	
+			<%= render 'no_user_task' %>
+		<% else %>
+			<%= render @user_tasks %>
+		<% end  %>		
+	</div>
+
+	<br>
+
+	<%= link_to new_user_task_path, remote: true do %>
+	  <button class="btn btn-default add-task"><%= fa_icon('plus') %>
+	  Add Task
+	  </button>
+	<% end %>
 </div>
-
-<br>
-
-<%= link_to new_user_task_path, remote: true do %>
-  <button class="btn btn-default add-task"><%= fa_icon('plus') %>
-  Add Task
-  </button>
-<% end %>
