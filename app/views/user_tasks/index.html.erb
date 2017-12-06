@@ -9,4 +9,8 @@
 
 <br>
 
-<%= link_to 'New User Task', new_user_task_path, remote: true %>
+<%= link_to new_user_task_path, remote: true do %>
+  <button class="btn btn-default add-task"><%= fa_icon('plus') %>
+  Add Task
+  </button>
+<% end %>

@@ -6,3 +6,18 @@
   display: none;
 }
 
+a {
+  &:hover {
+    text-decoration: none;
+  }
+
+  text-decoration: none;
+}
+
+.well {
+  background-color: lightblue;
+  a:hover {
+    text-decoration: line-through};
+
+
+}
