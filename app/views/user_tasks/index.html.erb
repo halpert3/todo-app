@@ -3,27 +3,9 @@
 <h1>User Tasks</h1>
 <div id="task-form"></div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Description</th>
-      <th>Due</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @user_tasks.each do |user_task| %>
-      <tr>
-        <td><%= user_task.description %></td>
-        <td><%= user_task.due %></td>
-        <td><%= link_to 'Show', user_task %></td>
-        <td><%= link_to 'Edit', edit_user_task_path(user_task) %></td>
-        <td><%= link_to 'Destroy', user_task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div id="tasks">
+  <%= render @user_tasks %>
+</div>
 
 <br>
 
