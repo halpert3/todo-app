@@ -1,5 +1,5 @@
 class UserTasksController < ApplicationController
-  before_action :all_tasks, only: [:index, :create]
+  before_action :all_tasks, only: [:index, :create, :update]
   before_action :set_user_task, only: [:show, :edit, :update, :destroy]
 
   # GET /user_tasks
@@ -45,11 +45,13 @@ class UserTasksController < ApplicationController
   def update
     respond_to do |format|
       if @user_task.update(user_task_params)
-        format.html { redirect_to @user_task, notice: 'User task was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user_task }
+        format.js
+        # format.html { redirect_to @user_task, notice: 'User task was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @user_task }
       else
-        format.html { render :edit }
-        format.json { render json: @user_task.errors, status: :unprocessable_entity }
+        format.js { render :edit }
+        # format.html { render :edit }
+        # format.json { render json: @user_task.errors, status: :unprocessable_entity }
       end
     end
   end
