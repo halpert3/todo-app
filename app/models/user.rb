@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :user_tasks, dependent: :destroy
 
   def self.create_with_omniauth(auth)
     create! do |user|

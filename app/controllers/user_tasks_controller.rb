@@ -1,7 +1,8 @@
 class UserTasksController < ApplicationController
+  before_action :authenticate!
   before_action :all_tasks, only: [:index, :create, :update, :destroy]
   before_action :set_user_task, only: [:show, :edit, :update, :destroy]
-
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_task
 
 
   # GET /user_tasks
@@ -27,7 +28,8 @@ class UserTasksController < ApplicationController
   # POST /user_tasks
   # POST /user_tasks.json
   def create
-    @user_task = UserTask.new(user_task_params)
+    @user_task = current_user.user_tasks.build(user_task_params)
+    #associates every task with a user
 
     respond_to do |format|
       if @user_task.save
@@ -72,7 +74,8 @@ class UserTasksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user_task
-      @user_task = UserTask.find(params[:id])
+      @user_task = current.user.user_tasks.find(params[:id])
+      #this will only allow you to edit tasks belonging to the user that's logged in
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -81,7 +84,12 @@ class UserTasksController < ApplicationController
     end
 
     def all_tasks
-        @user_tasks = UserTask.order(:due)
+        @user_tasks = current_user.user_tasks.order(:due)
+    end
+
+    def invalid_task
+      logger.error "Attempt to access invalid task #{params[:id]}"
+      redirect_to user_tasks_url, notice: 'Invalid task'
     end
 
 end

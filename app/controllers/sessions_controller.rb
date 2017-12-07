@@ -16,6 +16,9 @@ def destroy
   redirect_to_root_url, notice: 'Signed Out'
 end
 
+def new
+
+end
 
 
 end
