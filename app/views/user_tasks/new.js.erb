@@ -2,4 +2,7 @@ $('#task-form')
   .html("<%= j (render 'form') %>")
   .slideDown(350);
 
+$('.add-task').hide(0)
+// this hides the add task button when the create menu comes up
+
 <%= render 'datepicker' %>
