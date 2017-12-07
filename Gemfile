@@ -43,6 +43,13 @@ gem 'stamp'
 gem 'simple_form'
 gem 'bootstrap-datepicker-rails'
 
+# -- Secrets --
+
+gem 'figaro'
+
+# -- User Accounts --
+gem 'omniauth-facebook'
+
 
 
 group :development, :test do
