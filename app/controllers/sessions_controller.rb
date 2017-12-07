@@ -8,6 +8,7 @@ def create
 
   session[:user_id] = user.id
   redirect_to_root_url, notice: 'Signed In'
+
 end
 
 def destroy
